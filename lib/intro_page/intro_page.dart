@@ -1,7 +1,7 @@
 import 'package:cookies_app/catalog_page/catalog_page.dart';
+import 'package:cookies_app/constants.dart';
 import 'package:cookies_app/data.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:marqueer/marqueer.dart';
 import 'package:rive/rive.dart';
 import 'dart:math' as math;
@@ -19,6 +19,7 @@ class _IntroPageState extends State<IntroPage>
   late Animation<double> mainAnimation;
 
   bool isBouncing = false;
+  double value = 0;
 
   //late RiveAnimationController riveController;
 
@@ -26,17 +27,30 @@ class _IntroPageState extends State<IntroPage>
   void initState() {
     super.initState();
     mainController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 2500));
-    mainAnimation = Tween<double>(begin: 0, end: 2).animate(CurvedAnimation(
+        vsync: this,
+        duration: const Duration(milliseconds: kMainAnimationTime));
+    mainAnimation = Tween<double>(begin: 0, end: kMainAnimationTime / 1000)
+        .animate(CurvedAnimation(
       parent: mainController,
       curve: Curves.linear,
     ))
       ..addListener(() {
-        if(mainAnimation.isCompleted){
-          Navigator.pushAndRemoveUntil(context,
-              MaterialPageRoute(builder: (_) => CatalogPage()), (route) => false);
+        if (mainAnimation.isCompleted) {
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (_) => const CatalogPage()),
+              (route) => false);
         }
-        setState(() {});
+        setState(() {
+          value = mainAnimation.value;
+          double windows = kMainAnimationTime / 1000 - 1;
+          if (value > 1.0 && value <= windows) {
+            value = 1;
+          }
+          if (value > windows) {
+            value = kMainAnimationTime / 1000 - value;
+          }
+        });
       });
     Future.delayed(const Duration(milliseconds: 4000), () {
       isBouncing = true;
@@ -61,7 +75,6 @@ class _IntroPageState extends State<IntroPage>
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     double fontFreshCookies = 75;
-    double value = mainAnimation.value;
     return Scaffold(
       extendBody: true,
       backgroundColor: const Color(0xFF26282A),
@@ -77,25 +90,25 @@ class _IntroPageState extends State<IntroPage>
             FreshCookiesTextMarquee(
                 width: width,
                 height: height,
-                mainAnimation: mainAnimation,
+                value: value.clamp(0, 1),
                 fontFreshCookies: fontFreshCookies),
           Positioned(
             top: height / 2 + 100,
             bottom: 40,
-            left: value <= 1? 140 * mainAnimation.value - 250 : value >= 1? 140 * (2-mainAnimation.value) - 250 : 90,
+            left: 140 * value - 250,
             width: width * 0.55,
             child: Transform.rotate(
-                angle: -2 * math.pi * mainAnimation.value,
-                child: Image.asset(cookies[0]['image']!)),
+                angle: -2 * math.pi * value,
+                child: Image.asset('lib/assets/images/1.png')),
           ),
           Positioned(
             top: height * 0.25,
             bottom: 30,
-            right: value <= 1? 140 * mainAnimation.value - 250 : 140 * (2-mainAnimation.value) - 250,
+            right: 140 * value - 250,
             width: width * 0.6,
             child: Transform.rotate(
-                angle: 2 * math.pi * mainAnimation.value,
-                child: Image.asset(cookies[2]['image']!)),
+                angle: 2 * math.pi * value,
+                child: Image.asset('lib/assets/images/2.png')),
           )
         ],
       ),
@@ -108,26 +121,23 @@ class FreshCookiesTextMarquee extends StatelessWidget {
     super.key,
     required this.width,
     required this.height,
-    required this.mainAnimation,
     required this.fontFreshCookies,
+    required this.value,
   });
 
   final double width;
   final double height;
-  final Animation<double> mainAnimation;
+  final double value;
   final double fontFreshCookies;
 
   @override
   Widget build(BuildContext context) {
-    double value = mainAnimation.value;
     return Positioned(
       width: width,
       top: height / 2 + 55,
       bottom: 10,
       child: Opacity(
-        opacity: value <= 1
-            ? (mainAnimation.value).clamp(0, 1)
-            : (2 - mainAnimation.value).clamp(0, 1),
+        opacity: value,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

@@ -1,78 +1,32 @@
-List<Map<String, String>>cookies = [
-  {
-  "image": "lib/assets/images/1.png",
-  "text": "Cookie chocolate chip cookie mantequilla de maní cookie."
-  },
-  {
-    "image": "lib/assets/images/2.png",
-    "text": "Oreo cookie."
-  },
-  {
-    "image": "lib/assets/images/3.png",
-    "text": "Oreo cookie."
-  },
-  {
-    "image": "lib/assets/images/4.png",
-    "text": "Cookies de mantequilla de maní. Chispas de chocolate"
-  },
-  {
-    "image": "lib/assets/images/4.png",
-    "text": "Cookies de mantequilla de maní. Chispas de chocolate"
-  },
-  {
-    "image": "lib/assets/images/5.png",
-    "text": "Cookies tipo oblea"
-  },
-  {
-    "image": "lib/assets/images/6.png",
-    "text": "Cookies tipo oblea"
-  },
-  {
-    "image": "lib/assets/images/7.png",
-    "text": "Cookies delgada"
-  },
-  {
-    "image": "lib/assets/images/8.png",
-    "text": "Cookies bañada de chocolate"
-  },
-  {
-    "image": "lib/assets/images/9.png",
-    "text": "Scout cookies con chispas de chocolate."
-  },
-  {
-    "image": "lib/assets/images/10.png",
-    "text": "Cookies de vainilla bañanada de chocolate"
-  },
-  {
-    "image": "lib/assets/images/11.png",
-    "text": "Cookies seca tipo cracker"
-  },
-  {
-    "image": "lib/assets/images/12.png",
-    "text": "Cookies de vainilla"
-  },
-  {
-    "image": "lib/assets/images/13.png",
-    "text": "Cookies limón"
-  },
-  {
-    "image": "lib/assets/images/14.png",
-    "text": "Cookies limón"
-  },
-  {
-    "image": "lib/assets/images/15.png",
-    "text": "Cookies de Jengibre"
-  },
-  {
-    "image": "lib/assets/images/16.png",
-    "text": "Cookies de miel con almendra"
-  },
-  {
-    "image": "lib/assets/images/17.png",
-    "text": "Cookies de manteca con chispas de chocolate"
-  },
-  {
-    "image": "lib/assets/images/18.png",
-    "text": "Cookies de manteca sin gluten con chispas de chocolate"
-  },
+class Cookies {
+  int weight;
+  String name;
+  String description;
+  String image;
+
+  Cookies(
+    this.name,
+    this.weight,
+    this.description,
+    this.image,
+  );
+}
+
+List<Cookies> cookies = [
+  Cookies('Marijka', 300, "Cookie chocolate chip cookie mantequilla de maní cookie.", "lib/assets/images/1.png"),
+  Cookies('Oatmeal', 300, "Oreo cookie", "lib/assets/images/2.png"),
+  Cookies('Oreo', 300, "Oreo cookie", "lib/assets/images/3.png"),
+  Cookies('Chispas', 300, "Cookies de mantequilla de maní. Chispas de chocolate", "lib/assets/images/4.png"),
+  Cookies('Oblea', 300, "Cookies tipo oblea", "lib/assets/images/5.png"),
+  Cookies('Cookies tipo oblea', 300, "Cookies tipo oblea", "lib/assets/images/6.png"),
+  Cookies('Cookies delgada', 300, "Cookies tipo oblea", "lib/assets/images/7.png"),
+  Cookies('Cookies bañada de chocolate', 300, "Cookies tipo oblea", "lib/assets/images/8.png"),
+  Cookies('Cookies bañada de chocolate', 300, "Cookies tipo oblea", "lib/assets/images/9.png"),
+  Cookies('Vainilla + Choco', 300, "Cookies de vainilla bañanada de chocolate", "lib/assets/images/10.png"),
+  Cookies('Cracker', 300, "Cookies seca tipo cracker", "lib/assets/images/11.png"),
+  Cookies('Vainilla', 300, "Cookies de vainilla", "lib/assets/images/12.png"),
+  Cookies('Lemon', 300, "Cookies de limón", "lib/assets/images/13.png"),
+  Cookies('Vainilla', 300, "Cookies de vainilla", "lib/assets/images/14.png"),
+  Cookies('Jengibre', 300, "Cookies de Jengibre", "lib/assets/images/15.png"),
+  Cookies('Con Almendra', 300, "Cookies de miel con almendra", "lib/assets/images/16.png"),
 ];

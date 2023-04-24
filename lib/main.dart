@@ -1,3 +1,4 @@
+import 'package:cookies_app/catalog_page/catalog_page.dart';
 import 'package:flutter/material.dart';
 import 'intro_page/intro_page.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: IntroPage(),
+      home: const CatalogPage(),
     );
   }
 }

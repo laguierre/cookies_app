@@ -39,6 +39,7 @@ dependencies:
   google_fonts: ^4.0.3
   rive: ^0.10.4
   marqueer: ^1.4.0
+  animate_do: ^3.0.2
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +68,7 @@ flutter:
      - lib/assets/images/
      - lib/assets/fonts/
      - lib/assets/rives/
+     - lib/assets/icons/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
