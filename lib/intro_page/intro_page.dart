@@ -36,6 +36,7 @@ class _IntroPageState extends State<IntroPage>
     ))
       ..addListener(() {
         if (mainAnimation.isCompleted) {
+
           Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (_) => const CatalogPage()),
