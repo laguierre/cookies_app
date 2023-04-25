@@ -168,7 +168,7 @@ final int i;
                     width: sizeAddButton,
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Color(0xFFDDC6F9),
+                      color: kCustomPurpleColor,
                     ),
                     child: const Text(
                       '+',
@@ -202,25 +202,3 @@ Widget createTable() {
   }
   return Table(children: rows);
 }
-/*
-Widget createTable() {
-  List<TableRow> rows = [];
-  for (int i = 0; i < cookies.length - 1; i = i + 2) {
-    rows.add(TableRow(children: [
-      ZoomIn(
-        duration: Duration(milliseconds: (i + 1) * 400),
-        child: CookieCard(
-          cookie: cookies[i],
-        ),
-      ),
-      ZoomIn(
-        duration: Duration(milliseconds: (i + 2) * 400),
-        child: CookieCard(
-          cookie: cookies[i + 1],
-        ),
-      ),
-    ]));
-  }
-  return Table(children: rows);
-}
-*/
