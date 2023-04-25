@@ -11,7 +11,7 @@ class DetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    double kSizeButton = 45.0;
+    double kSizeButton = size.width * 0.10;
     return Scaffold(
       backgroundColor: const Color(0xFF26282A),
       body: SingleChildScrollView(
@@ -22,6 +22,7 @@ class DetailsPage extends StatelessWidget {
             CookieFatInfo(size: size, cookie: cookie),
             const SizedBox(height: 20),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 BounceInLeft(
                   child: CustomCircleButton(

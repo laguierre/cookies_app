@@ -31,7 +31,7 @@ class _CatalogPageState extends State<CatalogPage> {
     return Scaffold(
       body: AnimatedContainer(
         onEnd: () {
-          Future.delayed(Duration(milliseconds: 500), () {
+          Future.delayed(const Duration(milliseconds: 500), () {
             initCookiesGrid = true;
           });
         },
